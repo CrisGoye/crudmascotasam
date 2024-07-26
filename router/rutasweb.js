@@ -12,4 +12,4 @@ router.get("/servicios", (req, res) => {
     res.render('index', {titulo: "Nuestros servicios Dinamicos"});
 });
 
-modulo.exports = router;
+module.exports = router;

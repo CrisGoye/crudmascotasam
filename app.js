@@ -9,8 +9,9 @@ app.set('views', __dirname + '/views');
 /* middleware para contenido estatico*/
 app.use(express.static(__dirname + '/public'));
 
-/* rutas web */
+/* enrutamiento proyecto */
 app.use('/', require('./router/rutasweb'));
+app.use('/mascotas', require('./router/mascotas'));
 
 
 /* direccionar a vista 404 cuando se presente el error 404 */
