@@ -1,9 +1,9 @@
 <%- include('template/header', {tituloWeb: 'Página de Mascotas'}); %>
 
 <div class="container">
+
 <% if (arrayMascotas.length > 0) { %>
     <table class="table">
-
 <thead>
   <tr>
     <th scope="col">Id</th>
@@ -13,7 +13,7 @@
   </tr>
 </thead>
 <tbody>
-    <% arrayMascotas.forEach(mascota => {
+    <% arrayMascotas.forEach(mascota => { %>
 <tr>
     <th scope="row"><%= mascota.id %></th>
     <td><%= mascota.nombre %></td>
