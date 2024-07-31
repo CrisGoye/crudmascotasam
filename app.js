@@ -7,11 +7,11 @@ const mongoose = require('mongoose');
 const usuario = 'crisgstack6am';
 const password = '9DtoUyxtgl4idgc';
 const dbName = 'mascotas';
-
-const uri = `mongodb+srv://${usuario}:${password}@cluster0.ile9mkh.mongodb.net/${dbName}?retryWrites=true&w=majority&appName=Cluster0`
+const uri = `mongodb+srv://${usuario}:${password}@cluster0.ile9mkh.mongodb.net/${dbName}?retryWrites=true&w=majority&appName=Cluster0`;
 mongoose.connect(uri)
-  .then(()=> console.log('conectado a MongoDB')) 
-  .catch(e=> console.log('error de conexión a MongoDB', e))
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(e => console.log('Error de conexión a MongoDB', e));
+
 
 /* Establecemos el motor de plantillas */
 app.set('view engine', 'ejs');

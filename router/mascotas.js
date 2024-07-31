@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 
-const Mascota = require("../models/mascotas");
+const Mascota = require("../models/mascota");
 
 
 router.get("/", async (req, res)=>{
