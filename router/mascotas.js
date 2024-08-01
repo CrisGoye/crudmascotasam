@@ -3,22 +3,29 @@ const router = express.Router();
 
 const Mascota = require("../models/mascota");
 
-
 router.get("/", async (req, res)=>{
-try {
-    const arrayMascotas = await Mascota.find();
-    console.log(arrayMascotas)
-} catch (error) {
-    console.log(error)
-}
-
- //   res.render('mascotas', { arrayMascotas: [
-//     {id: 'mas001', nombre: 'Kira', descripcion: "Perro Pastor Aleman"},
-//        {id: 'mas002', nombre: 'Bella', descripcion: "Gata Criolla"},
-//      {id: 'mas003', nombre: 'Niña', descripcion: "Perro French Poodle"},
-//        {id: 'mas004', nombre: 'Hanna', descripcion: "Perro Labrador"}
-//    ]});
+    try {
+        const arrayMascotas = await Mascota.find();
+        // console.log(arrayMascotas)
+        res.render("mascotas", {arrayMascotas})
+    } catch (error) {
+        console.log(error)
+    }
 });
 
+router.get("/crear", async (req, res)=>{
+    res.render('crear');
+    });
 
+    /*router para recibir datos del formulario crear */
+    router.post("/", async (req, res)=>{
+        const body = req.body;
+        //console.log(body);
+        try{
+            await Mascota.create(body)
+            res.redirect('/mascotas')
+        }catch (error){
+            console.log('error:', error)
+        }
+        });
 module.exports = router;
