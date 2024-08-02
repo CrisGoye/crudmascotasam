@@ -28,4 +28,54 @@ router.get("/crear", async (req, res)=>{
             console.log('error:', error)
         }
         });
+
+        /* router para editar un documento */
+        
+        router.get("/:id", async (req, res)=>{
+            const id = req.params.id;
+            try{
+                const mascotaDB = await Mascota.findOne({_id: id})
+                //console.log(mascotaDB)
+                res.render('detalle',{
+                    mascota: mascotaDB,
+                    error: false
+                })
+            }catch (error){
+                console.log('error:', error)
+                res.render('detalle',{
+                    error: true,
+                    menasaje: "No se encontro ningun registro que coincida con el id"
+                })
+            }
+            });
+
+            /*router para borrar un documento*/
+            router.delete("/:id", async (req, res)=>{
+                const id = req.params.id;
+                try{
+                    const mascotaDB = await Mascota.findByIdAndDelete({_id: id })
+                    if (!mascotaDB) {
+                        res.json({
+                            estado: false,
+                            mensaje: "No fue posible eliminar el registro"
+                        })
+                        
+                    } else {
+                        res.json({
+                            estado: true,
+                            mensaje: "Registro Eliminado!!!"
+                        })
+                        
+                    }
+                    
+                }catch (error){
+                    console.log('error:', error)
+                    
+                }
+                });
+    
+
+
+
+
 module.exports = router;
