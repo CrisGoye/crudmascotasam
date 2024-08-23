@@ -1,19 +1,26 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
+const Mascota = require("../models/mascota");
+const Servicio = require("../models/servicio");
 
-/* enrutamiento */
-router.get('/', (req, res) => {
-    res.render('index', {titulo: "Bienvenido a Node.js con Express y con EJS"});
-})
+router.get("/", async (req, res) => {
+    try {
+        // Realiza ambas consultas en paralelo
+        const [countMascotas, countServicios] = await Promise.all([
+            Mascota.countDocuments(),
+            Servicio.countDocuments()
+        ]);
 
-// router.get("/servicios", async(req, res)=>{
-//     try {
-//         const arrayServicios = await Servicio.find();
-//         // console.log(arrayServicios)
-//         res.render("servicios", {arrayServicios})
-//     } catch (error) {
-//         console.log(error)
-//     }
-// });
+        // Renderiza la vista pasando ambos valores
+        res.render('index', {
+            titulo: "Panel de Control",
+            countMascotas: countMascotas,
+            countServicios: countServicios
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Ocurrió un error al cargar el panel de control.");
+    }
+});
 
 module.exports = router;

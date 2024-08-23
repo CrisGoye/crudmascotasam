@@ -6,5 +6,5 @@ const servicioSchema = new Schema({
     descripcion: String
 });
 
-const Servicio = mongoose.model('Servicio', servicioSchema);
+const Servicio = mongoose.model('servicio', servicioSchema);
 module.exports = Servicio;

@@ -1,8 +1,67 @@
 <%- include('template/header', {tituloWeb: 'Página de Inicio'} ); %>
 <%- include('template/aside'); %>
 
-    <h1 class="text-primary"><%= titulo %></h1>
-    <h2>Página de Inicio con EJS</h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae ducimus fuga corporis perspiciatis voluptatibus quae rem odio a expedita delectus sunt modi architecto, veniam magni omnis nobis commodi sapiente fugiat.</p>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Panel De Control</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+              <li class="breadcrumb-item active">Panel Control</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3><%= countMascotas %></h3>
+            <p>Mascotas</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <a href="/mascotas" class="small-box-footer">Detalles <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        </div>
+</section>
 
+        <section class="content">
+            <div class="container-fluid">
+              <!-- Small boxes (Stat box) -->
+              <div class="row">
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-success">
+                    <div class="inner">
+                      <h3><%= countServicios %></h3>
+                    <p>Servicios</p>
+                    </div>
+                    <div class="icon">
+                      <i class="fas fa-shield-heart"></i>
+                    </div>
+                    <a href="/servicios" class="small-box-footer">Detalles <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+                </div>       
+
+</section>
+
+    
+</div>
 <%- include('template/footer'); %>
