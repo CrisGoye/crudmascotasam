@@ -13,7 +13,7 @@ router.get("/", async (req, res)=>{
     }
 });
 
-router.get("/crear", async (req, res)=>{
+router.get("/crear", (req, res)=>{
     res.render('crear');
     });
 
@@ -74,6 +74,31 @@ router.get("/crear", async (req, res)=>{
                 }
                 });
     
+                /* router para actualizacion*/
+
+                router.put('/:id', async(req, res) =>{
+                    const id = req.params.id;
+                    const body = req.body;
+                    //console.log(body);
+                    try {
+                        const mascotaDB = await Mascota.findByIdAndUpdate(
+                            id, body, { useFindAndModify: false }
+                        )
+                        res.json({
+                            estado: true,
+                            mensaje: 'Mascota Editada'
+                        })
+                        
+                    } catch (error) {
+                        console.log(error);
+                        res.json({
+                            estado: false,
+                            mensaje: 'Edicion Fallida'
+                        })
+
+                        
+                    }
+                });
 
 
 

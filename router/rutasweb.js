@@ -1,14 +1,19 @@
 const express = require('express')
 const router = express.Router();
 
-/*enrutamiento*/
+/* enrutamiento */
 router.get('/', (req, res) => {
     res.render('index', {titulo: "Bienvenido a Node.js con Express y con EJS"});
 })
 
-/*ejemplo de enrutamiento */
-router.get("/servicios", (req, res)=>{
-    res.render('servicios', {titulo: "Nuestros servicios Dinamicos"});
-});
+// router.get("/servicios", async(req, res)=>{
+//     try {
+//         const arrayServicios = await Servicio.find();
+//         // console.log(arrayServicios)
+//         res.render("servicios", {arrayServicios})
+//     } catch (error) {
+//         console.log(error)
+//     }
+// });
 
 module.exports = router;
